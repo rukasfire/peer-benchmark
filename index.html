@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>同業評比</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root{
     --bg:#f5f7fa;--card:#fff;--ink:#1f2a37;--muted:#6b7280;--line:#e5e9f0;
@@ -28,6 +27,7 @@
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);margin:14px 0}
   .chart-box{position:relative;height:380px}
   .chart-box.tall{height:440px}
+  .chart-box svg{display:block;width:100%;height:100%}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .note{font-size:12.5px;color:var(--muted);background:#f0f4ff;border:1px solid #dbe6ff;border-radius:10px;padding:12px 14px;margin-top:12px}
   .note.warn{background:#fff7ed;border-color:#fed7aa}
@@ -76,7 +76,37 @@
 <h2>一、專利規模對標 <span class="en">Portfolio Scale Benchmark</span></h2>
 <p class="lead">彙整各家「對外披露 / 資料庫口徑之專利總量」。家具五金兩巨頭（Hettich、Blum）以數千件專利遙遙領先；川湖以 3,752 件核准居「伺服器滑軌」賽道之首，且幾乎「申請即核准」。南俊未公開具體數量（主打快速 NPI）。</p>
 <div class="card">
-  <div class="chart-box tall"><canvas id="scale"></canvas></div>
+  <div class="chart-box tall">
+    <svg viewBox="0 0 900 440" role="img" aria-labelledby="scale-title scale-desc">
+      <title id="scale-title">同業專利規模比較</title>
+      <desc id="scale-desc">Hettich 4554 件、川湖 3752 件、Blum 2000 件、富世達 463 件、Accuride 421 件，南俊未公開。</desc>
+      <g stroke="#e5e9f0" stroke-width="1">
+        <path d="M170 24V382M300 24V382M430 24V382M560 24V382M690 24V382M820 24V382"/>
+      </g>
+      <g fill="#6b7280" font-size="12" text-anchor="end">
+        <text x="158" y="58">Hettich 海蒂詩</text><text x="158" y="116">King Slide 川湖</text>
+        <text x="158" y="174">Blum 百隆</text><text x="158" y="232">Fositek 富世達</text>
+        <text x="158" y="290">Accuride</text><text x="158" y="348">Nan Juen 南俊*</text>
+      </g>
+      <g>
+        <rect x="170" y="38" width="592" height="28" rx="4" fill="#2563eb" opacity=".78"/>
+        <rect x="170" y="96" width="488" height="28" rx="4" fill="#7c3aed" opacity=".92"/>
+        <rect x="170" y="154" width="260" height="28" rx="4" fill="#2563eb" opacity=".78"/>
+        <rect x="170" y="212" width="60" height="28" rx="4" fill="#0e7490" opacity=".84"/>
+        <rect x="170" y="270" width="55" height="28" rx="4" fill="#d97706" opacity=".84"/>
+        <rect x="170" y="328" width="32" height="28" rx="4" fill="#94a3b8" opacity=".55"/>
+      </g>
+      <g fill="#1f2a37" font-size="12">
+        <text x="770" y="58">4,554</text><text x="666" y="116">3,752</text><text x="438" y="174">2,000</text>
+        <text x="238" y="232">463</text><text x="233" y="290">421</text><text x="210" y="348">N/A</text>
+      </g>
+      <g fill="#6b7280" font-size="11" text-anchor="middle">
+        <text x="170" y="402">0</text><text x="300" y="402">1,000</text><text x="430" y="402">2,000</text>
+        <text x="560" y="402">3,000</text><text x="690" y="402">4,000</text><text x="820" y="402">5,000</text>
+        <text x="495" y="428" font-size="12">專利總量（件，口徑見註）</text>
+      </g>
+    </svg>
+  </div>
   <div class="note warn"><b>口徑差異（重要）：</b>各公司披露方式不同，<u>不可直接橫向加總</u>。
   • 川湖 3,752＝<b>核准件數</b>（2026-08，TW+US+CN+JP+DE+UK+EU+CA 多國同族合併前的申請件數口徑之一）；公司亦自陳「專利逾 3,600 項」。
   • Hettich 4,554＝PatSnap 列 Paul Hettich GmbH <b>總專利族</b>；公司自陳另有「over 1,000 active / 6,000 global」兩種口徑。
@@ -87,7 +117,41 @@
 <h2>二、商業化強度雷達 <span class="en">Commercialization Strength Radar</span></h2>
 <p class="lead">六維度評分（0–100，分析師依公開資料給定之相對分級）：專利規模、技術專精度、商業化實證（毛利/市佔）、地理可執行、授權/聯盟網、成長動能。<b>注意：本雷達比的是「專利強度的不同面向」，而非同賽道勝負</b>——川湖/南俊/富世達屬伺服器滑軌賽道，Accuride/Hettich/Blum 屬家具五金賽道。</p>
 <div class="grid2">
-  <div class="card"><div class="chart-box"><canvas id="radar"></canvas></div></div>
+  <div class="card"><div class="chart-box">
+    <svg viewBox="0 0 520 380" role="img" aria-labelledby="radar-title radar-desc">
+      <title id="radar-title">商業化強度雷達比較</title>
+      <desc id="radar-desc">比較六家公司在專利規模、技術專精度、商業化實證、地理可執行、授權聯盟與成長動能六個面向的相對評分。</desc>
+      <g font-size="10.5" fill="#1f2a37">
+        <circle cx="18" cy="14" r="4" fill="#7c3aed"/><text x="27" y="18">川湖</text>
+        <circle cx="82" cy="14" r="4" fill="#2563eb"/><text x="91" y="18">南俊</text>
+        <circle cx="146" cy="14" r="4" fill="#0e7490"/><text x="155" y="18">富世達</text>
+        <circle cx="226" cy="14" r="4" fill="#d97706"/><text x="235" y="18">Accuride</text>
+        <circle cx="322" cy="14" r="4" fill="#0f9d58"/><text x="331" y="18">Hettich</text>
+        <circle cx="408" cy="14" r="4" fill="#db2777"/><text x="417" y="18">Blum</text>
+      </g>
+      <g transform="translate(0 18)" stroke="#e5e9f0" fill="none">
+        <path d="M260 163L296 184L296 226L260 247L224 226L224 184Z"/>
+        <path d="M260 139L318 172L318 238L260 271L202 238L202 172Z"/>
+        <path d="M260 115L339 160L339 250L260 295L181 250L181 160Z"/>
+        <path d="M260 91L360 148L360 262L260 319L160 262L160 148Z"/>
+        <path d="M260 67L364 127L364 247L260 307L156 247L156 127Z"/>
+        <path d="M260 67V307M156 127L364 247M364 127L156 247"/>
+      </g>
+      <g transform="translate(0 18)" fill-opacity=".07" stroke-width="2">
+        <polygon points="260,97 364,127 364,247 260,277 172,238 156,127" fill="#7c3aed" stroke="#7c3aed"/>
+        <polygon points="260,157 317,154 317,220 260,235 224,208 177,139" fill="#2563eb" stroke="#2563eb"/>
+        <polygon points="260,145 333,145 322,223 260,253 192,226 161,130" fill="#0e7490" stroke="#0e7490"/>
+        <polygon points="260,115 317,154 312,217 260,271 218,211 229,169" fill="#d97706" stroke="#d97706"/>
+        <polygon points="260,73 348,136 343,235 260,307 187,229 208,157" fill="#0f9d58" stroke="#0f9d58"/>
+        <polygon points="260,79 359,130 354,241 260,307 177,235 208,157" fill="#db2777" stroke="#db2777"/>
+      </g>
+      <g fill="#1f2a37" font-size="11.5" text-anchor="middle">
+        <text x="260" y="72">專利規模</text><text x="411" y="137">技術專精度</text>
+        <text x="417" y="274">商業化實證</text><text x="260" y="348">地理可執行</text>
+        <text x="103" y="274">授權／聯盟</text><text x="105" y="137">成長動能</text>
+      </g>
+    </svg>
+  </div></div>
   <div class="card">
     <h3 style="margin:0 0 10px; font-size:15px">讀圖重點</h3>
     <p style="font-size:13px; margin:0 0 8px"><b>川湖 (紫)</b>：技術專精度、商業化實證、成長動能三軸拉滿——伺服器滑軌規格共定者、87% 毛利、80% AI 市佔，且與 NVIDIA / CSP 綁定。</p>
@@ -141,47 +205,5 @@
 
 </div>
 
-<script>
-const C={ink:'#1f2a37',muted:'#6b7280',line:'#e5e9f0'};
-Chart.defaults.color=C.muted;Chart.defaults.font.family='-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif';
-Chart.defaults.font.size=12;
-
-// 1. Scale bar (sorted desc by disclosed patent volume)
-new Chart(document.getElementById('scale'),{
-  type:'bar',
-  data:{labels:['Hettich 海蒂詩','King Slide 川湖','Blum 百隆','Fositek 富世達','Accuride','Nan Juen 南俊*'],
-    datasets:[{label:'對外披露 / 資料庫口徑 專利總量',
-      data:[4554,3752,2000,463,421,null],
-      backgroundColor:Array(6).fill('rgba(37,99,235,.78)'),borderRadius:4}]},
-  options:{maintainAspectRatio:false,indexAxis:'y',
-    plugins:{legend:{display:false},
-      tooltip:{callbacks:{label:c=>c.parsed.x==null?' 專利數未公開 (N/A)':(' '+c.parsed.x.toLocaleString()+' 件（見口徑註）')}}},
-    scales:{x:{title:{display:true,text:'專利總量（件，口徑見註）'},grid:{color:C.line},beginAtZero:true},
-      y:{grid:{display:false}}}}
-});
-const sc=Chart.getChart('scale');
-sc.data.datasets[0].backgroundColor[1]='rgba(124,58,237,.92)'; // 川湖 高亮紫
-sc.data.datasets[0].backgroundColor[5]='rgba(148,163,184,.55)'; // 南俊 N/A 灰
-sc.update();
-
-// 2. Radar
-new Chart(document.getElementById('radar'),{
-  type:'radar',
-  data:{labels:['專利規模','技術專精度','商業化實證','地理可執行','授權/聯盟','成長動能'],
-    datasets:[
-      {label:'川湖 King Slide',data:[75,100,100,75,85,100],borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,.18)',borderWidth:2,pointBackgroundColor:'#7c3aed'},
-      {label:'南俊國際 Nan Juen',data:[25,55,55,40,35,80],borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.10)',borderWidth:2,pointBackgroundColor:'#2563eb'},
-      {label:'富世達 Fositek',data:[35,70,60,55,65,95],borderColor:'#0e7490',backgroundColor:'rgba(14,116,144,.10)',borderWidth:2,pointBackgroundColor:'#0e7490'},
-      {label:'Accuride',data:[60,55,50,70,40,30],borderColor:'#d97706',backgroundColor:'rgba(217,119,6,.10)',borderWidth:2,pointBackgroundColor:'#d97706'},
-      {label:'Hettich 海蒂詩',data:[95,85,80,100,70,50],borderColor:'#0f9d58',backgroundColor:'rgba(15,157,88,.10)',borderWidth:2,pointBackgroundColor:'#0f9d58'},
-      {label:'Blum 百隆',data:[90,95,90,100,80,50],borderColor:'#db2777',backgroundColor:'rgba(219,39,119,.10)',borderWidth:2,pointBackgroundColor:'#db2777'}
-    ]},
-  options:{maintainAspectRatio:false,
-    plugins:{legend:{position:'top'}},
-    scales:{r:{min:0,max:100,grid:{color:C.line},angleLines:{color:C.line},
-      pointLabels:{font:{size:12.5},color:C.ink},
-      ticks:{display:false,stepSize:20}}}}
-});
-</script>
 </body>
 </html>
